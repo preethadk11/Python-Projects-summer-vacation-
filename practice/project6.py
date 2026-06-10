@@ -1,4 +1,4 @@
-#smart number game
+#smart number guessing game
 import random
 def smart_game(attempts,range,very_close,close,far):
     attempts_used=0
