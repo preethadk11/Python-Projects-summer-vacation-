@@ -1,8 +1,16 @@
-#contact book
-contacts = {
-    "Alice": "9876543210",
-    "Bob": "9123456789"
-}
+#contact book with contact file
+contacts = {}
+def load_contact():
+    with open("contacts.txt","r") as file:
+        for line in file:
+            line=line.strip()
+            data=line.split(",")
+            contacts[data[0]]=data[1]
+    print(contacts)
+def save_contacts():
+    with open("contacts.txt","w") as file:
+        for name,phone in contacts.items():
+            file.write(f'{name},{phone}\n')
 def add_contact():
     contact=input("Enter the contact name: ").capitalize()
     if contact in contacts:
@@ -88,6 +96,7 @@ def partial_search():
         print("Contact not found")
 
 menu="\n\t\t====Contanct Book====\n\n1. Add Contact\n2. Search Contact\n3. Update Contact\n4. Delete Contact\n5. View all Contact\n6. Total contacts\n7.Search by phone number\n8.Partial search\n9.Exit"
+load_contact()
 while True:
     print(menu)
     choice=input("Enter your choice: ")
@@ -95,12 +104,15 @@ while True:
         choice=int(choice)
         if choice==1:
             add_contact()
+            save_contacts()
         elif choice==2:
             search_contact()
         elif choice==3:
             update_contact()
+            save_contacts()
         elif choice==4:
             delete_contact()
+            save_contacts()
         elif choice==5:
             view_contact()
         elif choice==6:
