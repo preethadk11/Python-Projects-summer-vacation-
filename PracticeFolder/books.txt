@@ -1,0 +1,5 @@
+Harry Potter,J.K. Rowling,True
+Atomic Habits,James Clear,True
+Python Crash Course,Eric Matthes,False
+Clean Code,Robert C. Martin,True
+Dune,The Hobbit,True
