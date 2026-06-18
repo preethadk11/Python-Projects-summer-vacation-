@@ -1,8 +1,0 @@
-Travel,150
-Books,600
-Entertainment,350
-Food,80
-Shopping,1200
-Travel,300
-Medical,500
-Internet,799
