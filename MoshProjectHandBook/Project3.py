@@ -87,8 +87,10 @@ def two_player():
             print("Player1 wins")
             player1+=1
         attempt+=1
-        input("Press enter when player 1 is ready...")
-        print("\n"*50)
+        if attempt<3:
+            input("Press enter when player 1 is ready...")
+            print("\n"*50)
+
     if player1>player2:
         print(f'Player1 won this match with {player1} point out of 3 points\nPlayer2 lose this match with {player2} points')
     elif player1==player2:
