@@ -31,8 +31,12 @@ def multipleconversion(base,amount):
     conversion=[]
     many=int(input("How many currency do you want to convert to: "))
     for i in range(many):
-        cur=input(f'Enter currency {i+1}: ')
+        cur=input(f'Enter currency {i+1}: ').upper()
+        while cur not in rates:
+           cur=input(f'Enter currency {i+1}: ').upper()
         currency.append(cur.upper())
+            
+
     for curr in currency:
         base_rate=rates[base]
         target_rate=data["rates"][curr]
@@ -46,29 +50,29 @@ while True:
     print(menu)
     choice=input("Enter the choice: ")
     if choice.isdigit():
-        if choice=="1":
+        if choice=="1" or choice=="2":
             amount=float(input("Enter the amount: "))
             while True:
                 base=input("Enter the base currency: ").upper()
                 if base in rates.keys():
-                    result,target=conversion(base,amount)
-                    print(f'{result:.2f} {target}')
-                    history.append(f'{amount} {base} to {result:.2f} {target}')
-                    break
+                    if choice=="1":
+                        result,target=conversion(base,amount)
+                        print(f'{result:.2f} {target}')
+                        history.append(f'{amount} {base} to {result:.2f} {target}')
+                        break
+                    elif choice=="2":
+                        result=multipleconversion(base,amount)
+                        for cur in result:
+                            print(cur)
+                            history.append(cur)
+                        break
                 else:
                     print("Invalid base currency!")
-        elif choice=="2":
-            amount=float(input("Enter the amount: "))
-            while True:
-                base=input("Enter the base currency: ").upper()
-                if base in rates.keys():
-                    result=multipleconversion(base,amount)
-                    for cur in result:
-                        print(cur)
-                        history.append(cur)
-                    break
-                else:
-                    print("Invalide base currency!")            
+
+                    
+        else:
+            print("The choice is unknown!")     
+            continue  
     else:
         print("Invalid choice")
     again=input("CONTINUE? (yes/no): ").lower()
